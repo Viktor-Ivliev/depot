@@ -1,0 +1,20 @@
+<% if notice %>
+	<p id="notic7e"><%= notice %></p>
+<% end %>
+
+<h1>Your Pragmatic Catalog</h1>
+
+<% @products.each do |product| %>
+
+	<div class="entry">
+	
+		<%= image_tag(product.image_url) %>
+		<h3><%= product.title %></h3>
+		
+		<p><%= sanitize(product.description) %></p>
+		<!--oбратите внимание на использование метода sanitize() для описания (description). Он позволяет безопасно добавлять стилевое оформление HTML, повышающее интерес наших клиентов к описаниям.-->
+		<div class="price_line">
+			<span class="price"><%= number_to_currency(product.price) %></span>
+		</div>
+	</div>
+<% end %>
