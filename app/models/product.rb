@@ -7,5 +7,11 @@ class Product < ActiveRecord::Base
 		with: %r{\.(gif|jpg|png)\Z}i, #проверка на форматы
 		message: 'must be a URL for GIF, JPG or PNG image.'
 	}
+
+	def self.latest#код, возвращающий товар, который подвергся изменениям последним.
+		Product.order(:updated_at).last
+	end
 	#validates :title, {langth: Product.title >10}
 end
+
+
