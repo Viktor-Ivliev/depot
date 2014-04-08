@@ -12,6 +12,22 @@ class Product < ActiveRecord::Base
 		Product.order(:updated_at).last
 	end
 	#validates :title, {langth: Product.title >10}
+
+	has_many :line_items#может принадлежать к множеству  таблиц корзины.....
+
+	before_destroy :ensure_not_referenced_by_any_line_item# както странно аботает, типа если таваров ссылающихся на этот товар нет то очищаем что то
+	
+	private
+	# убеждаемся в отсутствии товарных позиций, ссылающихся на данный товар
+	def ensure_not_referenced_by_any_line_item
+		if line_items.empty?
+			return true
+		else
+			errors.add(:base, 'There are headings')
+			#существуют товарные позиции
+			return false
+		end
+	end
 end
 
 
