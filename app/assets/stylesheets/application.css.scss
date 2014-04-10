@@ -34,9 +34,9 @@
 }
 
 #columns {
-	background: #141;
+	background: #131;
 	#main {
-		margin-left: 13em;
+		margin-left: 15em;
 		padding: 1em;
 		background: white;
 	}
@@ -44,8 +44,29 @@
 	#side {
 		float: left;
 		padding: 1em 2em;
-		width: 9em;
-		background: #141;
+		width: 11em;
+		background: #131;
+
+		form, div {
+			display: inline;
+		}
+		input {
+			font-size: small;
+		}
+		#cart {
+			font-size: smaller;
+			color: white;
+
+			table {
+				border-top: 1px dotted #595;
+				border-bottom: 1px dotted #595;
+				margin-bottom: 15px;
+				
+			}
+		}
+
+
+
 		ul {
 			padding: 0;
 			li {
