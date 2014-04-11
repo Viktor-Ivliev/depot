@@ -14,7 +14,8 @@ class Product < ActiveRecord::Base
 	#validates :title, {langth: Product.title >10}
 
 	has_many :line_items#может принадлежать к множеству  таблиц корзины.....
-
+	has_many :orders, through: :line_items
+	
 	before_destroy :ensure_not_referenced_by_any_line_item# както странно аботает, типа если таваров ссылающихся на этот товар нет то очищаем что то
 	
 	private
