@@ -1,8 +1,8 @@
 class StoreController < ApplicationController
-	include CurrentCart
-	before_action :set_cart
-	
+    include CurrentCart
+    before_action :set_cart
+    
   def index
-  	@products = Product.order(:title)#получение заголовков
+    @products = Product.order(:title)#получение заголовков
   end
 end

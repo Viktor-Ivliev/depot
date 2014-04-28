@@ -1,25 +1,25 @@
 <% if notice %>
-	<p id="notic7e"><%= notice %></p>
+  <p id="notic7e"><%= notice %></p>
 <% end %>
 
 <h1>Your Pragmatic Catalog</h1>
 <% cache ['store', Product.latest] do %><!--кеширование всей записи, бд-->
-	<% @products.each do |product| %>
-		<% cache ['entry', product] do %><!--кеш отдельной записи-->
-			<div class="entry">
-			
-				<%= image_tag(product.image_url) %>
-				<h3><%= product.title %></h3>
-				
-				<p><%= sanitize(product.description) %></p>
-				<!--oбратите внимание на использование метода sanitize() для описания (description). Он позволяет безопасно добавлять стилевое оформление HTML, повышающее интерес наших клиентов к описаниям.-->
-				<div class="price_line">
-					<span class="price"><%= number_to_currency(product.price) %></span>
-					<!--добавляем кнопку дабавления товара, с использованием мтода пст
-					с помощь ссылки буттон_то, передаем ид продукта --><!---->
-					<%= button_to 'Add to Cart', line_items_path(product_id: product), remote: true %><!--remote: true -приспособили браузер для отправки AJAX-запроса нашему приложению-->
-				</div>
-			</div>
-		<% end %>
-	<% end %>
+  <% @products.each do |product| %>
+    <% cache ['entry', product] do %><!--кеш отдельной записи-->
+      <div class="entry">
+      
+        <%= image_tag(product.image_url) %>
+        <h3><%= product.title %></h3>
+        
+        <p><%= sanitize(product.description) %></p>
+        <!--oбратите внимание на использование метода sanitize() для описания (description). Он позволяет безопасно добавлять стилевое оформление HTML, повышающее интерес наших клиентов к описаниям.-->
+        <div class="price_line">
+          <span class="price"><%= number_to_currency(product.price) %></span>
+          <!--добавляем кнопку дабавления товара, с использованием мтода пст
+          с помощь ссылки буттон_то, передаем ид продукта --><!---->
+          <%= button_to 'Add to Cart', line_items_path(product_id: product), remote: true %><!--remote: true -приспособили браузер для отправки AJAX-запроса нашему приложению-->
+        </div>
+      </div>
+    <% end %>
+  <% end %>
 <% end %>

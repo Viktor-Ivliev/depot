@@ -15,11 +15,11 @@ class StoreControllerTest < ActionController::TestCase
     #проверяется наличие трех элементов,
     #у которых есть атрибут class по имени entry в той части страницы, 
     #которая имеет атрибут id со значением main.
-	assert_select '#main .entry', 3
+  assert_select '#main .entry', 3
 
-	
-	assert_select 'h3', 'Programming Ruby 1.9'
-	assert_select '.price', /\$[,\d]+\.\d\d/
+  
+  assert_select 'h3', 'Programming Ruby 1.9'
+  assert_select '.price', /\$[,\d]+\.\d\d/
   end
 
     test "markup needed for store.js.coffee is in place" do
